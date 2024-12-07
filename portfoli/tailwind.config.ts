@@ -12,6 +12,19 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        dosis: ["Dosis", "Arial", "sans-serif"],
+        staatliches: ["Staatliches", "Arial", "sans-serif"],
+      },
+      keyframes: {
+        'color-change': { 
+          '0%, 100%': { color: 'black' }, 
+          '50%': { color: 'white' },
+        },
+      },
+      animation: {
+        'color-change': 'color-change 4s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
