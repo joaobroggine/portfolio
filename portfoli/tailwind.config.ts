@@ -15,6 +15,7 @@ export default {
       fontFamily: {
         dosis: ["Dosis", "Arial", "sans-serif"],
         staatliches: ["Staatliches", "Arial", "sans-serif"],
+        fauna: ["Fauna One", "Arial", "sans-serif"],
       },
       keyframes: {
         'color-change': { 
