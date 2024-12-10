@@ -11,7 +11,7 @@ export default function page() {
           <div className='w-1/2 h-full bg-[#87cefa] flex flex-col items-center justify-center'>
             <h1 className='text-3xl sm:text-7xl w-3/4 md:text-5xl lg:text-6xl'>
               Olá, Sou Broggine, programador em
-              <span className="animate-color-change"> NEXT.JS14</span>
+              <span className="animate-color-change"> NEXT.JS15</span>
             </h1>
             <div className='flex items-center w-full pl-8 md:pl-20 space-x-2 2xl:mr-10 xl:ml-36 md:mr-8 '>
               <a href="https://github.com/joaobroggine" target='_blank'>
@@ -48,7 +48,7 @@ export default function page() {
       </section>
       <section className="mt-32 w-full px-4 space-y-8 flex flex-col justify-center items-center">
         <h1 className="font-staatliches text-4xl sm:text-5xl text-white text-center">Biografia</h1>
-        <p className="font-fauna text-white drop-shadow-xl text-center max-w-screen-md">
+        <p className="font-fauna text-black drop-shadow-xl text-center max-w-screen-md">
           Sou João Vitor Broggine Lopes, programador apaixonado por tecnologia e inovação. Atualmente, estudo Análise e Desenvolvimento de Sistemas na FIAP e tenho experiência com OracleDB, Java, Spring Boot, Python, JavaScript, React e Next.js. Busco sempre aplicar boas práticas de desenvolvimento para criar soluções eficientes e melhorar a experiência do usuário. Estou constantemente aprendendo e explorando novas tecnologias para enfrentar os desafios do futuro da TI.
         </p>
       </section>

@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <header className="bg-[#87cefa] shadow-md fixed top-0 w-full z-50">
-      <div className="flex items-center h-16 px-4 md:px-8">
+      <div className="flex sm:justify-center items-center h-16 px-4 md:px-8">
         {/* Menu Hamburger */}
         <button
           onClick={toggleMenu}
