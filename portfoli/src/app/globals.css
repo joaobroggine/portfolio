@@ -39,7 +39,17 @@ body {
   font-family: 'Fauna One', serif;
 }
 
+.navlink {
+  @apply relative;
+}
 
+.navlink::after {
+  @apply content-[''] w-0 bg-black h-[2px] left-0 bottom-[2px] rounded-xl absolute duration-300;
+}
+
+.navlink:hover::after {
+  @apply w-full
+}
 
 
 

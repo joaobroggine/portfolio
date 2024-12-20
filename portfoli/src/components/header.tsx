@@ -24,23 +24,23 @@ export default function Header() {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-8 font-dosis text-xl text-black font-bold">
-          <Link href="/idiomas" className="text-black no-underline hover:bg-slate-200 duration-300">
+          <Link href="/idiomas" className="text-black no-underline navlink">
             Idiomas
           </Link>
           <a
             href="/cv/curriculoprofissional.pdf"
             download
-            className="text-black no-underline hover:bg-slate-200 duration-300"
+            className="text-black no-underline navlink"
           >
             Baixar Currículo
           </a>
-          <Link href="/" className="text-black no-underline hover:bg-slate-200 duration-300">
+          <Link href="/" className="text-black no-underline navlink">
             Home
           </Link>
-          <Link href="/certificados" className="text-black no-underline hover:bg-slate-200 duration-300">
+          <Link href="/certificados" className="text-black no-underline navlink">
             Certificados
           </Link>
-          <Link href="/sobre" className="text-black no-underline hover:bg-slate-200 duration-300">
+          <Link href="/sobre" className="text-black no-underline navlink">
             Sobre mim
           </Link>
         </nav>

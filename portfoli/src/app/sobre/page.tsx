@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <div>
       <Header />
-      <main className="my-20 flex flex-col items-center justify-center px-4 md:px-10">
+      <main className="mt-28 my-20 flex flex-col items-center justify-center px-4 md:px-10">
         {/* Section: Sobre mim */}
         <div className="flex w-full justify-center">
           <h1 className="font-staatliches text-4xl md:text-6xl border-b-2 border-b-black mb-9">
