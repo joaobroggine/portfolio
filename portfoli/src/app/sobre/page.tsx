@@ -2,6 +2,11 @@ import React from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sobre mim | JB"
+}
 
 export default function Page() {
   return (

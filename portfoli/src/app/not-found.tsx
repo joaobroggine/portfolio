@@ -1,4 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ERRO 404 | JB"
+}
 
 export default function notfound() {
   return (
