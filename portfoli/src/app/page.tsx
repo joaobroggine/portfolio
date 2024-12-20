@@ -115,6 +115,7 @@ export default function page() {
                   src="/img/lighwats.png"
                   className="card-img-top"
                   alt="Lightwatts"
+                  rel="noopener noreferrer"
                   style={{ objectFit: "cover", height: "200px" }}
                 />
                 <div

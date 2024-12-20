@@ -24,23 +24,23 @@ export default function Header() {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-8 font-dosis text-xl text-black font-bold">
-          <Link href="/idiomas" className="text-black hover:text-blue-500 duration-150 hover:underline">
+          <Link href="/idiomas" className="text-black no-underline hover:bg-slate-200 duration-300">
             Idiomas
           </Link>
           <a
             href="/cv/curriculoprofissional.pdf"
             download
-            className="text-black hover:text-blue-500 duration-150 hover:underline"
+            className="text-black no-underline hover:bg-slate-200 duration-300"
           >
             Baixar Currículo
           </a>
-          <Link href="/" className="text-black hover:text-blue-500 duration-150 hover:underline">
+          <Link href="/" className="text-black no-underline hover:bg-slate-200 duration-300">
             Home
           </Link>
-          <Link href="/linguagens" className="text-black hover:text-blue-500 duration-150 hover:underline">
-            Linguagens
+          <Link href="/certificados" className="text-black no-underline hover:bg-slate-200 duration-300">
+            Certificados
           </Link>
-          <Link href="/sobre" className="text-black hover:text-blue-500 duration-150 hover:underline">
+          <Link href="/sobre" className="text-black no-underline hover:bg-slate-200 duration-300">
             Sobre mim
           </Link>
         </nav>
@@ -59,24 +59,24 @@ export default function Header() {
           <FiX />
         </button>
         <div className="flex flex-col items-center justify-center h-full space-y-8 text-black font-dosis text-xl font-bold">
-          <Link href="/idiomas" onClick={toggleMenu} className="text-black hover:text-blue-500 duration-150 hover:underline">
+          <Link href="/idiomas" onClick={toggleMenu} className="text-black no-underline">
             Idiomas
           </Link>
           <a
             href="/cv/curriculoprofissional.pdf"
             download
             onClick={toggleMenu}
-            className="text-black hover:text-blue-500 duration-150 hover:underline"
+            className="text-black no-underline"
           >
             Baixar Currículo
           </a>
-          <Link href="/" onClick={toggleMenu} className="text-black hover:text-blue-500 duration-150 hover:underline">
+          <Link href="/" onClick={toggleMenu} className="text-black  no-underline">
             Home
           </Link>
-          <Link href="/linguagens" onClick={toggleMenu} className="text-black hover:text-blue-500 duration-150 hover:underline">
-            Linguagens
+          <Link href="/certificados" onClick={toggleMenu} className="text-black no-underline">
+            Certificados
           </Link>
-          <Link href="/sobre" onClick={toggleMenu} className="text-black hover:text-blue-500 duration-150 hover:underline">
+          <Link href="/sobre" onClick={toggleMenu} className="text-black no-underline">
             Sobre mim
           </Link>
         </div>
