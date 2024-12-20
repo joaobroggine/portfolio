@@ -1,4 +1,4 @@
-export default function footer() {
+export default function Footer() {
   return (
     <div>
       <footer className="py-3 my-4">
