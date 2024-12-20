@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "ERRO 404 | JB"
@@ -15,9 +16,9 @@ export default function notfound() {
             <span className="text-danger">Oops!</span> Page not found.
           </p>
           <p className="lead">The page you’re looking for doesn’t exist.</p>
-          <a href="/" className="btn btn-primary">
+          <Link href="/" className="btn btn-primary">
             Go Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>
