@@ -210,6 +210,35 @@ export default function page() {
                 </div>
               </div>
             </div>
+            {/*Portfólio Davi Souza Braga*/}
+            <div className="col-md-4 mb-4">
+              <div
+                className="card shadow-sm h-100 hover:scale-105 duration-500"
+                style={{ border: "1px solid black" }}
+              >
+                <img
+                  src="/img/souzabraga.png"
+                  className="card-img-top"
+                  alt="Portfolio Souza Braga"
+                  style={{ objectFit: "cover", height: "200px" }}
+                />
+                <div
+                  className="card-body"
+                  style={{ backgroundColor: "#f4f4f4" }}
+                >
+                  <h5 className="card-title" style={{ fontSize: "1.5rem" }}>
+                    Portfólio Souza Braga
+                  </h5>
+                  <p className="card-text" style={{ color: "#333" }}>
+                    Portfólio requisitado por um cliente, usando tecnologias como NextJS15, Tailwind CSS e Javascript, misturando composições estáticas e responsivas com animações suaves de bibliotecas do Javascript como a Framer-Motion. Cliente ficou satisfeito com o resultado que lhe foi entregue.
+                  </p>
+                  <a href="https://souzabraga-u4hx.vercel.app/" target="_blank" className="btn btn-outline-dark">
+                    Ver Projeto
+                  </a>
+                </div>
+              </div>
+              
+            </div>
           </div>
         </div>
       </section>

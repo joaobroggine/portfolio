@@ -28,7 +28,7 @@ export default function Header() {
             Idiomas
           </Link>
           <a
-            href="/cv/curriculoprofissional.pdf"
+            href="/cv/joaobroggine.pdf"
             download
             className="text-black no-underline navlink"
           >
