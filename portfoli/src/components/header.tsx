@@ -1,86 +1,153 @@
-"use client"
+"use client";
 
-import Link from 'next/link';
-import React, { useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+import React, { useEffect, useState } from "react";
+import { FiMenu, FiX, FiDownload } from "react-icons/fi";
+
+type NavItem = { id: string; label: string };
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const navItems: NavItem[] = [
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projetos" },
+    { id: "languages", label: "Idiomas" },
+    { id: "about", label: "Sobre" },
+    { id: "certificates", label: "Certificados" },
+  ];
+
+  const toggleMenu = () => setIsOpen((p) => !p);
+  const closeMenu = () => setIsOpen(false);
+
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    closeMenu();
+
+    const headerOffset = 90;
+    const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
-    <header className="bg-white shadow-md fixed top-0 w-full z-50">
-      <div className="flex sm:justify-center items-center h-16 px-4 md:px-8">
-        {/* Menu Hamburger */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-black text-3xl focus:outline-none"
-        >
-          {isOpen ? <FiX /> : <FiMenu />}
-        </button>
-
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-8 font-dosis text-xl text-black font-bold">
-          <Link href="/idiomas" className="text-black no-underline navlink">
-            Idiomas
-          </Link>
-          <a
-            href="/cv/joaobroggine.pdf"
-            download
-            className="text-black no-underline navlink"
-          >
-            Baixar Currículo
-          </a>
-          <Link href="/" className="text-black no-underline navlink">
-            Home
-          </Link>
-          <Link href="/certificados" className="text-black no-underline navlink">
-            Certificados
-          </Link>
-          <Link href="/sobre" className="text-black no-underline navlink">
-            Sobre mim
-          </Link>
-        </nav>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 bg-white transform ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 ease-in-out md:hidden`}
+    <>
+      <header
+        className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
+          scrolled ? "py-2" : "py-3"
+        }`}
       >
-        <button
-          onClick={toggleMenu}
-          className="absolute top-5 right-5 text-black text-3xl"
-        >
-          <FiX />
-        </button>
-        <div className="flex flex-col items-center justify-center h-full space-y-8 text-black font-dosis text-xl font-bold">
-          <Link href="/idiomas" onClick={toggleMenu} className="text-black no-underline">
-            Idiomas
-          </Link>
-          <a
-            href="/cv/curriculoprofissional.pdf"
-            download
-            onClick={toggleMenu}
-            className="text-black no-underline"
+        <div className="container px-3 px-md-0">
+          <div className={`lux-header ${scrolled ? "lux-header-scrolled" : ""}`}>
+            <button
+              type="button"
+              className="brand-mark no-underline"
+              onClick={() => {
+                closeMenu();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              aria-label="Voltar ao topo"
+            >
+              <span className="brand-dot" />
+              <span className="brand-text">BROGGINE</span>
+            </button>
+            <nav className="d-none d-md-flex align-items-center gap-4 font-dosis fw-bold">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => scrollToId(item.id)}
+                  className="navlink lux-nav-link no-underline lux-nav-btn"
+                >
+                  {item.label}
+                </button>
+              ))}
+              <a
+                href="/cv/resume.pdf"
+                download
+                className="cv-btn no-underline d-inline-flex align-items-center gap-2"
+              >
+                <FiDownload />
+                Baixar Currículo
+              </a>
+            </nav>
+            <button
+              onClick={toggleMenu}
+              className="d-md-none menu-btn"
+              aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
+        </div>
+      </header>
+      <div
+        className={`mobile-overlay ${isOpen ? "open" : ""}`}
+        onClick={closeMenu}
+        aria-hidden={!isOpen}
+      />
+      <aside className={`mobile-drawer ${isOpen ? "open" : ""}`}>
+        <div className="mobile-drawer-top">
+          <button
+            type="button"
+            className="brand-mark no-underline"
+            onClick={() => {
+              closeMenu();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            aria-label="Voltar ao topo"
           >
+            <span className="brand-dot" />
+            <span className="brand-text">BROGGINE</span>
+          </button>
+          <button onClick={closeMenu} className="menu-btn" aria-label="Fechar menu">
+            <FiX />
+          </button>
+        </div>
+        <nav className="mobile-nav">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => scrollToId(item.id)}
+              className="mobile-link no-underline mobile-nav-btn"
+            >
+              {item.label}
+            </button>
+          ))}
+          <a
+            href="/cv/resume.pdf"
+            download
+            onClick={closeMenu}
+            className="mobile-cv no-underline d-inline-flex align-items-center justify-content-center gap-2"
+          >
+            <FiDownload />
             Baixar Currículo
           </a>
-          <Link href="/" onClick={toggleMenu} className="text-black  no-underline">
-            Home
-          </Link>
-          <Link href="/certificados" onClick={toggleMenu} className="text-black no-underline">
-            Certificados
-          </Link>
-          <Link href="/sobre" onClick={toggleMenu} className="text-black no-underline">
-            Sobre mim
-          </Link>
-        </div>
-      </div>
-    </header>
+        </nav>
+      </aside>
+    </>
   );
 }

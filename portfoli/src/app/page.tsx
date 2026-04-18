@@ -1,248 +1,402 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
-export default function page() {
+type Project = {
+  title: string;
+  image: string;
+  desc: string;
+  href: string;
+  external?: boolean;
+  download?: boolean;
+};
+
+export default function Page() {
+  const techs = [
+    "/img/linux.png",
+    "/img/javascript.webp",
+    "/img/typescript.png",
+    "/img/bootstrap.png",
+    "/img/tailwind.png",
+    "/img/react.png",
+    "/img/nextjs.png",
+    "/img/python.webp",
+    "/img/java.png",
+    "/img/spring.png",
+    "/img/chsarp2.png",
+    "/img/dotnet.png",
+    "/img/oracledb.png",
+    "/img/postgres.png",
+  ];
+
+  const projects: Project[] = [
+    {
+      title: "Lightwatts",
+      image: "/img/lighwats.png",
+      desc: "Plataforma em Next.js para otimizar consumo de energia com relatórios personalizados e foco em performance.",
+      href: "https://lightwatts.vercel.app/",
+      external: true,
+    },
+    {
+      title: "Calculadora Java",
+      image: "/img/javacalculator2.png",
+      desc: "Calculadora com JFrame em Java, interface intuitiva e operações matemáticas essenciais para uso rápido.",
+      href: "/java/java-calculator-main.zip",
+      download: true,
+    },
+    {
+      title: "Portfolio",
+      image: "/img/portfolioatt.png",
+      desc: "Portfólio pessoal com Next.js 15, visual responsivo e foco em experiência de navegação fluida.",
+      href: "#",
+    },
+    {
+      title: "Portfólio Souza Braga",
+      image: "/img/souzabraga.png",
+      desc: "Projeto comercial com Next.js + Tailwind + animações suaves, combinando estética e conversão.",
+      href: "https://souzabraga-u4hx.vercel.app/",
+      external: true,
+    },
+  ];
+
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % projects.length);
+    }, 4500);
+    return () => clearInterval(id);
+  }, [projects.length]);
+
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % projects.length);
+  const prevSlide = () =>
+    setCurrent((prev) => (prev - 1 + projects.length) % projects.length);
+
   return (
-    <div className="text-white overflow-x-hidden">
+    <div className="lux-page text-white overflow-x-hidden pt-12">
+      <div className="bg-blob blob-1" />
+      <div className="bg-blob blob-2" />
+      <div className="bg-blob blob-3" />
       <Header />
-      <div className="row mt-lg-5 mt-md-5 mt-sm-5 mt-5 p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center justify-center text-center rounded-3 border border-black shadow-lg">
-        <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
-          <h1 className="display-4 fw-bold lh-1 font-staatliches text-black">
-            Olá, sou Broggine. Desenvolvedor Full Stack!
-          </h1>
-          <p className="lead text-black">
-            Do design à implementação, crio soluções digitais completas que unem
-            inovação, funcionalidade e performance, transformando ideias em
-            experiências únicas e impactantes, tanto na interface quanto por
-            trás das telas.
-          </p>
-          <div className="d-grid gap-2 justify-content-lg-center d-md-flex justify-content-md-center mb-4 mb-lg-3">
-            <a
-              href="https://github.com/joaobroggine"
-              target="_blank"
-              className="no-underline"
-            >
-              <button
-                type="button"
-                className="btn btn-outline-dark btn-lg px-4 me-md-2 fw-bold d-flex align-items-center justify-content-center w-100"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="30"
-                  fill="currentColor"
-                  className="bi bi-github me-2"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                </svg>
-                Github
-              </button>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jo%C3%A3o-broggine-5b92a02b2/"
-              target="_blank"
-              className="no-underline"
-            >
-              <button
-                type="button"
-                className="btn btn-outline-primary btn-lg px-4 d-flex align-items-center justify-content-center w-100"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="30"
-                  fill="currentColor"
-                  className="bi bi-linkedin me-2"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                </svg>
-                Linkedin
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-      <h1 className="text-black text-center mt-20 text-6xl font-staatliches">
-        Meus conhecimentos em programação
-      </h1>
-      <section className="mt-16 text-black flex flex-wrap justify-center items-center gap-4">
-        {[
-          "/img/html.webp",
-          "/img/css.png",
-          "/img/javascript.webp",
-          "/img/typescript.png",
-          "/img/bootstrap.png",
-          "/img/tailwind.png",
-          "/img/react.png",
-          "/img/nextjs.png",
-          "/img/python.webp",
-          "/img/java.png",
-          "/img/spring.png",
-          "/img/oracledb.png",
-        ].map((icon, index) => (
-          <div
-            key={index}
-            className="p-4 rounded-xl border-2 border-black bg-white shadow-md hover:shadow-xl transform hover:scale-105 transition"
-          >
-            <Image src={icon} alt="Tech Icon" width={35} height={35} />
-          </div>
-        ))}
-      </section>
-      <section
-        className="projects-section py-5"
-        style={{ backgroundColor: "#fff", color: "#000" }}
-      >
-        <div className="container text-center border-t-2 border-black py-5 my-6">
-          <h2
-            className="mb-4 font-staatliches"
-            style={{ color: "#000", fontSize: "3.5rem" }}
-          >
-            Meus Projetos
-          </h2>
-          <div className="row">
-            {/* Lightwatts */}
-            <div className="col-md-4 mb-4">
-              <div
-                className="card shadow-sm h-100 hover:scale-105 duration-500"
-                style={{ border: "1px solid black" }}
-              >
-                <img
-                  src="/img/lighwats.png"
-                  className="card-img-top"
-                  alt="Lightwatts"
-                  rel="noopener noreferrer"
-                  style={{ objectFit: "cover", height: "200px" }}
-                />
-                <div
-                  className="card-body"
-                  style={{ backgroundColor: "#f4f4f4" }}
-                >
-                  <h5 className="card-title" style={{ fontSize: "1.5rem" }}>
-                    Lightwatts
-                  </h5>
-                  <p className="card-text" style={{ color: "#333" }}>
-                    Lightwatts é uma plataforma desenvolvida com NextJS 14,
-                    React e Tailwind CSS, focada em gerar relatórios
-                    personalizados para otimizar o consumo de energia elétrica
-                    em residências, ajudando os usuários a reduzir custos e
-                    aumentar a eficiência energética.
+        <main className="container py-5">
+            <section className="glass hero-wrap p-4 p-lg-5 mb-5">
+              <div className="row align-items-center g-4">
+                <div className="col-lg-7 text-center text-lg-start">
+                  <span className="hero-pill">DESENVOLVEDOR FULL STACK</span>
+                  <h1 className="hero-title mt-3 mb-3">
+                    Olá, eu sou <span className="broggine-name">BROGGINE</span>
+                  </h1>
+                  <p className="hero-sub">
+                    Do design à implementação, crio soluções digitais completas com
+                    foco em inovação, funcionalidade e performance — transformando
+                    ideias em experiências marcantes.
                   </p>
-                  <a
-                    href="https://lightwatts.vercel.app/"
-                    target="_blank"
-                    className="btn btn-outline-dark"
-                  >
-                    Ver Projeto
-                  </a>
+                  <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mt-4">
+                    <a
+                      href="https://github.com/joaobroggine"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-dark btn-lg px-4 cta-btn"
+                    >
+                      GitHub
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/jo%C3%A3o-broggine-5b92a02b2/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary btn-lg px-4 cta-btn"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                <div className="col-lg-5 d-flex justify-content-center">
+                  <div className="avatar-glass">
+                    <img className="avatar-img"
+                    src="https://avatars.githubusercontent.com/u/160923665?v=4" 
+                    alt="Profile Pic" />
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section id="skills" className="mb-5">
+            <div className="skills-head text-center mb-4">
+              <h2 className="section-title mb-0">Meus conhecimentos em programação</h2>
+            </div>
+            <div className="skills-marquee one-line">
+              <div className="skills-track">
+                {[...techs, ...techs, ...techs].map((icon, i) => (
+                  <div className="skill-pill" key={i}>
+                    <Image src={icon} alt="Tech icon" width={48} height={48} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+            <section id="projects" className="mb-5">
+              <h2 className="section-title text-center mb-4">Meus Projetos</h2>
+
+              <div className="carousel-shell glass">
+                <button className="nav-arrow left" onClick={prevSlide}>
+                  ‹
+                </button>
+                <button className="nav-arrow right" onClick={nextSlide}>
+                  ›
+                </button>
+                <div className="carousel-track">
+                  {projects.map((project, index) => (
+                    <article
+                      key={index}
+                      className={`project-slide ${index === current ? "active" : ""}`}
+                    >
+                      <div className="row g-0 align-items-stretch">
+                        <div className="col-md-6">
+                          <div className="project-image-wrap">
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="project-image"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-md-6 d-flex">
+                          <div className="p-4 p-lg-5 d-flex flex-column justify-content-center">
+                            <h3 className="project-title">{project.title}</h3>
+                            <p className="project-desc">{project.desc}</p>
+                            <a
+                              href={project.href}
+                              target={project.external ? "_blank" : undefined}
+                              rel={project.external ? "noopener noreferrer" : undefined}
+                              download={project.download}
+                              className="btn btn-outline-light mt-2 align-self-start px-4"
+                            >
+                              Ver Projeto
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+                <div className="dots">
+                  {projects.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrent(i)}
+                      className={`dot ${i === current ? "active" : ""}`}
+                      aria-label={`Ir para projeto ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+          <section id="languages" className="mb-5">
+            <div className="skills-head text-center mb-4">
+              <h2 className="section-title mb-0">Comunicação e idiomas</h2>
+            </div>
+            <div className="lang-grid">
+              <article className="lang-card glass">
+                <div className="lang-media">
+                  <Image
+                    src="/img/estadosunidos.webp"
+                    alt="Inglês"
+                    width={900}
+                    height={600}
+                    className="lang-img"
+                    priority={false}
+                  />
+                </div>
+                <div className="lang-body">
+                  <h3 className="lang-title">Inglês</h3>
+                  <p className="lang-level">Avançado (leitura e escrita) • Intermediário (conversação)</p>
+                  <p className="lang-text">
+                    Tenho muita confiança para ler e escrever com facilidade. Em conversação,
+                    consigo me comunicar e manter conversas, e continuo evoluindo fluência e pronúncia.
+                  </p>
+                </div>
+              </article>
+              <article className="lang-card glass">
+                <div className="lang-media">
+                  <Image
+                    src="/img/espanha.png"
+                    alt="Espanhol"
+                    width={900}
+                    height={600}
+                    className="lang-img"
+                  />
+                </div>
+                <div className="lang-body">
+                  <h3 className="lang-title">Espanhol</h3>
+                  <p className="lang-level">Básico</p>
+                  <p className="lang-text">
+                    Entendo expressões comuns e consigo ler textos simples identificando o contexto.
+                    Na escrita, me expresso de forma direta e estou expandindo vocabulário e estruturas.
+                  </p>
+                </div>
+              </article>
+              <article className="lang-card glass">
+                <div className="lang-media">
+                  <Image
+                    src="/img/libras.webp"
+                    alt="Libras"
+                    width={900}
+                    height={600}
+                    className="lang-img"
+                  />
+                </div>
+                <div className="lang-body">
+                  <h3 className="lang-title">Libras</h3>
+                  <p className="lang-level">Básico (com certificado)</p>
+                  <p className="lang-text">
+                    Tenho certificado de conclusão e uma base sólida. Ainda estou desenvolvendo prática e fluência
+                    para me comunicar com mais naturalidade em situações do dia a dia.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section id="about" className="mb-5">
+            <div className="skills-head text-center mb-4">
+              <h2 className="section-title mb-0">Quem eu sou e como eu penso</h2>
+            </div>
+            <div className="about-shell glass">
+              <div className="row g-4 align-items-center">
+                <div className="col-lg-6">
+                  <h3 className="about-title">Sobre mim</h3>
+                  <p className="about-text">
+                    Sou João Vitor Broggine Lopes, 20 anos, de Taboão da Serra (SP).
+                    Comecei cedo explorando lógica e criação com ferramentas como Scratch
+                    e hoje sou formado em Análise e Desenvolvimento de Sistemas na FIAP.
+                  </p>
+                  <p className="about-text mb-0">
+                    Curto construir produtos completos — do layout ao back-end — com foco
+                    em performance, clareza e uma experiência de uso que dá vontade de
+                    ficar no site.
+                  </p>
+                </div>
+                <div className="col-lg-6">
+                  <div className="about-media">
+                    <Image
+                      src="/img/code.jpg"
+                      alt="Código"
+                      width={1200}
+                      height={800}
+                      className="about-img"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="about-divider" />
+              <div className="row g-4">
+                <div className="col-lg-7">
+                  <h3 className="about-subtitle">O que a tecnologia é para mim</h3>
+                  <p className="about-text">
+                    Programar é transformar ideias em soluções reais. Eu gosto de criar
+                    coisas úteis, bonitas e rápidas — e ver o resultado funcionando de
+                    forma simples para quem usa.
+                  </p>
+                  <p className="about-text mb-0">
+                    Também vejo tecnologia como colaboração: código bem feito, interfaces
+                    acessíveis e sistemas organizados que facilitam a vida.
+                  </p>
+                </div>
+                <div className="col-lg-5">
+                  <div className="soft-grid">
+                    {[
+                      { title: "Autodidata", desc: "Aprendo rápido e destravo sozinho." },
+                      { title: "Responsável", desc: "Compromisso com prazo e qualidade." },
+                      { title: "Bilíngue", desc: "Costumo ser o tradutor em meios profissionais." },
+                    ].map((s, i) => (
+                      <div className="soft-card" key={i}>
+                        <p className="soft-title">{s.title}</p>
+                        <p className="soft-desc">{s.desc}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-            {/* Calculadora em Java */}
-            <div className="col-md-4 mb-4">
-              <div
-                className="card shadow-sm h-100 hover:scale-105 duration-500"
-                style={{ border: "1px solid black" }}
-              >
-                <img
-                  src="/img/javacalculator.png"
-                  className="card-img-top"
-                  alt="Calculadora"
-                  style={{ objectFit: "cover", height: "200px" }}
-                />
-                <div
-                  className="card-body"
-                  style={{ backgroundColor: "#f4f4f4" }}
-                >
-                  <h5 className="card-title" style={{ fontSize: "1.5rem" }}>
-                    Calculadora Java
-                  </h5>
-                  <p className="card-text" style={{ color: "#333" }}>
-                    Calculadora simples desenvolvida em Java utilizando JFrame,
-                    permitindo realizar operações matemáticas básicas como soma,
-                    subtração, multiplicação e divisão, além de operações mais
-                    complexas, com uma interface gráfica intuitiva e fácil de
-                    usar.
-                  </p>
-                  <a
-                    href="/java/java-calculator-main.zip"
-                    download
-                    className="btn btn-outline-dark"
-                  >
-                    Ver Projeto
-                  </a>
-                </div>
-              </div>
+          </section>
+          <section id="certificates" className="mb-5">
+            <div className="skills-head text-center mb-4">
+              <h2 className="section-title mb-0">Formações e conquistas</h2>
             </div>
-            {/* Portfolio */}
-            <div className="col-md-4 mb-4">
-              <div
-                className="card shadow-sm h-100 hover:scale-105 duration-500"
-                style={{ border: "1px solid black" }}
-              >
-                <img
-                  src="/img/portfolio.png"
-                  className="card-img-top"
-                  alt="Portfolio"
-                  style={{ objectFit: "cover", height: "200px" }}
-                />
-                <div
-                  className="card-body"
-                  style={{ backgroundColor: "#f4f4f4" }}
-                >
-                  <h5 className="card-title" style={{ fontSize: "1.5rem" }}>
-                    Portfolio
-                  </h5>
-                  <p className="card-text" style={{ color: "#333" }}>
-                    Portfolio pessoal criado com Next.js 15, React, Tailwind CSS
-                    e Bootstrap, destacando projetos de desenvolvimento web e
-                    outras conquistas, com foco em design responsivo e uma
-                    navegação fluída para oferecer uma ótima experiência ao
-                    usuário.
-                  </p>
-                  <a href="#" className="btn btn-outline-dark">
-                    Ver Projeto
-                  </a>
-                </div>
-              </div>
+            <div className="cert-grid">
+              {[
+                {
+                  img: "/img/certificado7.png",
+                  alt: "Certificado freeCodeCamp em parceria com a Microsoft",
+                  title: "freeCodeCamp + Microsoft",
+                  desc: "Certificação em parceria com a Microsoft, reforçando prática e consistência no aprendizado.",
+                },
+                {
+                  img: "/img/certificado8.png",
+                  alt: "Certificado de estruturas de computadores da FIAP",
+                  title: "Estruturas de Computadores — FIAP",
+                  desc: "Fundamentos das arquiteturas de computadores e sua influência no desempenho dos sistemas.",
+                },
+                {
+                  img: "/img/certificado6.png",
+                  alt: "Certificado de Libras da FIAP",
+                  title: "Libras (Básico) — FIAP",
+                  desc: "Introdução prática e visão de acessibilidade e inclusão na comunicação.",
+                },
+                {
+                  img: "/img/certificado1.png",
+                  alt: "Certificado da Fundação Bradesco de Python",
+                  title: "Python (Básico) — Fundação Bradesco",
+                  desc: "Fundamentos da linguagem, estruturas de dados, funções e lógica aplicada.",
+                },
+                {
+                  img: "/img/certificado2.png",
+                  alt: "Certificado da Fundação Bradesco de HTML, CSS e JavaScript",
+                  title: "HTML, CSS e JavaScript — Fundação Bradesco",
+                  desc: "Base sólida de web: estrutura, estilização responsiva e introdução ao JS.",
+                },
+                {
+                  img: "/img/certificado3.png",
+                  alt: "Certificado da Gran Faculdade",
+                  title: "Inteligência Artificial — Gran Faculdade",
+                  desc: "Conceitos e aplicações de IA, com foco em uso responsável e contexto de mercado.",
+                },
+                {
+                  img: "/img/certificado4.png",
+                  alt: "Certificado da Hashtag",
+                  title: "IA aplicada a Dados — Hashtag",
+                  desc: "Integração de IA com ferramentas de dados (Excel/Power BI/Python) e automações.",
+                },
+                {
+                  img: "/img/certificado5.png",
+                  alt: "Certificado da FIAP sobre Formação e Sustentabilidade",
+                  title: "Formação e Sustentabilidade — FIAP",
+                  desc: "Visão de impacto social/ambiental e boas práticas para tecnologia e negócios.",
+                },
+              ].map((c, i) => (
+                <article className="cert-card glass" key={i}>
+                  <div className="cert-media">
+                    <Image
+                      src={c.img}
+                      alt={c.alt}
+                      width={1400}
+                      height={900}
+                      className="cert-img"
+                    />
+                  </div>
+                  <div className="cert-body">
+                    <h3 className="cert-title">{c.title}</h3>
+                    <p className="cert-desc">{c.desc}</p>
+                  </div>
+                </article>
+              ))}
             </div>
-            {/*Portfólio Davi Souza Braga*/}
-            <div className="col-md-4 mb-4">
-              <div
-                className="card shadow-sm h-100 hover:scale-105 duration-500"
-                style={{ border: "1px solid black" }}
-              >
-                <img
-                  src="/img/souzabraga.png"
-                  className="card-img-top"
-                  alt="Portfolio Souza Braga"
-                  style={{ objectFit: "cover", height: "200px" }}
-                />
-                <div
-                  className="card-body"
-                  style={{ backgroundColor: "#f4f4f4" }}
-                >
-                  <h5 className="card-title" style={{ fontSize: "1.5rem" }}>
-                    Portfólio Souza Braga
-                  </h5>
-                  <p className="card-text" style={{ color: "#333" }}>
-                    Portfólio requisitado por um cliente, usando tecnologias como NextJS15, Tailwind CSS e Javascript, misturando composições estáticas e responsivas com animações suaves de bibliotecas do Javascript como a Framer-Motion. Cliente ficou satisfeito com o resultado que lhe foi entregue.
-                  </p>
-                  <a href="https://souzabraga-u4hx.vercel.app/" target="_blank" className="btn btn-outline-dark">
-                    Ver Projeto
-                  </a>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </section>
-      <Footer/>
+          </section>
+        </main>
+      <Footer />
     </div>
   );
 }

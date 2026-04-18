@@ -1,18 +1,47 @@
+"use client";
+
 import "bootstrap/dist/css/bootstrap.min.css";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div>
-      <footer className="py-3 my-4">
-        <ul className="nav justify-content-center border-bottom pb-3 mb-3">
-          <li className="nav-item">
-            <a href="https://mail.google.com/mail/u/1/#inbox?compose=GTvVlcSHwsCQdswZFSgJTPrZwWFQFJNsKJQXBrzQBqXHTLmXVzQVGjVbVzThBTXDMwjKdvFGhVCJL" target="_blank" rel="noopener noreferrer" className="nav-link px-2 text-body-secondary hover:underline">
-              joaovitorbrogginelopes@gmail.com
+    <footer className="footer-minimal-wrap mt-5">
+      <div className="container">
+        <div className="footer-minimal">
+          <div className="footer-minimal-links">
+            <a
+              href="mailto:joaovitorbrogginelopes@gmail.com"
+              className="footer-minimal-link no-underline"
+            >
+              <FiMail />
+              <span>joaovitorbrogginelopes@gmail.com</span>
             </a>
-          </li>
-        </ul>
-        <p className="text-center text-body-secondary">© 2024 João Vitor Broggine, +55 11 98306-7361</p>
-      </footer>
-    </div>
+            <a
+              href="https://github.com/joaobroggine"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-minimal-link no-underline"
+            >
+              <FiGithub />
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jo%C3%A3o-broggine-5b92a02b2/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-minimal-link no-underline"
+            >
+              <FiLinkedin />
+              <span>LinkedIn</span>
+            </a>
+          </div>
+          <p className="footer-minimal-copy mb-0">
+            © {currentYear} João Vitor Broggine
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }
